@@ -1,0 +1,5 @@
+export const REQUEST_SUCCESS = 'REQUEST_SUCCESS'
+export const REQUEST_FAILURE = 'REQUEST_FAILURE'
+
+export const LODING = 'LODING'
+export const UNLODING = 'UNLODING'
