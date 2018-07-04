@@ -14,7 +14,7 @@ const styles = theme => ({
     padding: theme.spacing.unit,
     height: 'auto',
     maxWidth: '60vw',
-    backgroundColor: '#17bd05',
+    backgroundColor: '#1dcfd8',
   },
 });
 
