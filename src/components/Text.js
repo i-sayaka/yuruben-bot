@@ -8,12 +8,14 @@ import DoneIcon from '@material-ui/icons/Done';
 
 const styles = theme => ({
   root: {
-    display: 'flex',
-    flexWrap: 'wrap',
+    float: 'right',
+    margin: theme.spacing.unit,
   },
   chip: {
     margin: theme.spacing.unit,
-    float: 'right'
+    padding: theme.spacing.unit,
+    height: 'auto',
+    maxWidth: '60vw',
   },
 });
 
@@ -28,11 +30,17 @@ class Text extends React.Component {
     render() {
         const { classes } = this.props;
 
-        return (
+        if (this.props.query) {
+          return (
             <div className={classes.root}>
                 <Chip label={this.props.query} className={classes.chip} />
             </div>
-        );
+          );
+        } else {
+          return (
+            ''
+          );
+        }
     }
 }
 

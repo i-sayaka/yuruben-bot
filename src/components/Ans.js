@@ -8,12 +8,14 @@ import DoneIcon from '@material-ui/icons/Done';
 
 const styles = theme => ({
   root: {
-    display: 'flex',
-    flexWrap: 'wrap',
+    margin: theme.spacing.unit,
+    float: 'left',
   },
   chip: {
     margin: theme.spacing.unit,
-    float: 'right'
+    padding: theme.spacing.unit,
+    height: 'auto',
+    maxWidth: '60vw'
   },
 });
 
@@ -28,11 +30,48 @@ class Text extends React.Component {
     render() {
         const { classes } = this.props;
 
-        return (
+        {if (this.props.ans === 'None') {
+          return (
             <div className={classes.root}>
-                <Chip label={this.props.ans} className={classes.chip} />
+              <Chip label='すみません、わかりませんでした。' className={classes.chip} />
             </div>
-        );
+          );
+        } else if (this.props.ans === 'LT登壇者') {
+          return (
+            <div className={classes.root}>
+              <Chip label={
+                <div>
+                  <p>山村さん 「野球観戦について」</p>
+                  <p>大石さん 「訓練について」</p>
+                  <p>岩堀さん 「夢の国について」</p>
+                  <p>井藤さん 「ざっくり金融史と保険選び」</p>
+                  <p>銀羽さん 「手書き文字」</p>
+                  <p>辻さん 「期待値の考え方」</p>
+                  <p>下岡さん 「AI知識なしでできるチャットボットの作り方」</p>
+                  <p>黒木さん「xcodeについて」</p> 
+                </div>
+              }
+                className={classes.chip} />
+            </div>
+          );
+        } else if (this.props.ans === '開催場所') {
+          return (
+            <div className={classes.root}>
+              <Chip label='本社5階、セミナールームで行います' className={classes.chip} />
+            </div>
+          );
+        } else if (this.props.ans === '開催日時') {
+          return (
+            <div className={classes.root}>
+              <Chip label='次回ゆるべんは、7/5(木)に開催します' className={classes.chip} />
+            </div>
+          );
+        } else {
+          return (
+            ''
+          );
+        }
+      }
     }
 }
 

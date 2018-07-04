@@ -3,17 +3,19 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Button, TextField, IconButton } from '@material-ui/core'
 import { Send } from '@material-ui/icons'
+import TextFieldIcon from 'material-ui-textfield-icon';
 
 const styles = theme => ({
   root: {
     margin: theme.spacing.unit,
-    width: '100%'
+    width: '100vw'
   },
 });
 
 const CustomTextField = withStyles(theme => ({
   root: {
       margin: theme.spacing.unit,
+      width: '80vw'
   },
 }))(TextField)
 
@@ -49,7 +51,7 @@ class Form extends React.Component {
     return (
       <div className={classes.root}>
         <CustomTextField
-            label="ご質問"
+            label="質問する..."
             value={this.state.text}
             onChange={this.onChangeField}
         />
