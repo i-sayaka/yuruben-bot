@@ -43,6 +43,7 @@ class Form extends React.Component {
    */
   onSubmit() {
     this.props.onSubmit(`https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/77b58474-9fa0-4514-8916-70302690fc4b?subscription-key=7d19f95e144b410fa6d10952ec61a447&verbose=true&timezoneOffset=0&q=${this.state.text}`)
+    this.setState({ text: '' })
   }
 
   render() {
