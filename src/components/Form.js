@@ -1,25 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Button, TextField } from '@material-ui/core'
+import { Button, TextField, IconButton } from '@material-ui/core'
 import { Send } from '@material-ui/icons'
 
 const styles = theme => ({
+  root: {
+    margin: theme.spacing.unit,
+    width: '100%'
+  },
 });
 
 const CustomTextField = withStyles(theme => ({
   root: {
       margin: theme.spacing.unit,
-      width: '100px',
   },
 }))(TextField)
-
-const CustomButton = withStyles(theme => ({
-  root: {
-      margin: theme.spacing.unit,
-      width: '100px',
-  },
-}))(Button)
 
 class Form extends React.Component {
   constructor(props) {
@@ -51,18 +47,18 @@ class Form extends React.Component {
     const { classes } = this.props;
 
     return (
-      <div>
+      <div className={classes.root}>
         <CustomTextField
             label="ご質問"
             value={this.state.text}
             onChange={this.onChangeField}
         />
-        <CustomButton
-          variant="outlined"
+        <IconButton
+          variant="fab"
           onClick={this.onSubmit}
         >
-          送信　<Send />
-        </CustomButton>
+          <Send />
+        </IconButton>
       </div>
     );
   }

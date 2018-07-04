@@ -1,6 +1,8 @@
 import * as CONST from '../ActionTypes'
 
 const initialState = {
+    query: '',
+    ans: ''
 }
 
 function bot(state = initialState, action) {
@@ -12,7 +14,11 @@ function bot(state = initialState, action) {
             return Object.assign(
                 {},
                 state,
-                {}
+                {
+                    query:action.payload.query,
+                    ans:action.payload.topScoringIntent.intent
+
+                }
             )
         case CONST.REQUEST_FAILURE:
             return Object.assign(
