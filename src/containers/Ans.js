@@ -6,6 +6,7 @@ import Ans from '../components/Ans'
 const mapStateToProps = (state, props) => {
     return {
         ans: state.bot.ans,
+        loading: state.bot.loading,
     }
 }
 

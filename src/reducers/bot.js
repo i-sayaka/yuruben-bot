@@ -2,7 +2,8 @@ import * as CONST from '../ActionTypes'
 
 const initialState = {
     query: '',
-    ans: ''
+    ans: '',
+    loading: false
 }
 
 function bot(state = initialState, action) {
@@ -16,7 +17,7 @@ function bot(state = initialState, action) {
                 state,
                 {
                     query:action.payload.query,
-                    ans:action.payload.topScoringIntent.intent
+                    ans:action.payload.topScoringIntent.intent,
 
                 }
             )
@@ -25,6 +26,26 @@ function bot(state = initialState, action) {
                 {},
                 state,
                 {}
+            )
+        // -------------------------------------------------------------------------
+        // loading制御
+        // -------------------------------------------------------------------------
+        case CONST.LODING:
+            return Object.assign(
+                {},
+                state,
+                {
+                    query: '',
+                    ans: '',
+                    loading: true
+
+                }
+            )
+        case CONST.UNLODING:
+            return Object.assign(
+                {},
+                state,
+                {loading: false}
             )
         default:
             return state

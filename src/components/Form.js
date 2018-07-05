@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Button, TextField, IconButton } from '@material-ui/core'
 import { Send } from '@material-ui/icons'
-import TextFieldIcon from 'material-ui-textfield-icon';
 
 const styles = theme => ({
   root: {
@@ -31,6 +30,14 @@ class Form extends React.Component {
   }
 
   /**
+     * コンポーネントマウント時の処理
+     */
+    componentWillMount() {
+      this.eventHandler = this.onEnter.bind(this)
+      document.body.addEventListener('keydown', this.eventHandler)
+  }
+
+  /**
    * フィールドの値が変更されたときの処理
    * @param e
    */
@@ -42,8 +49,17 @@ class Form extends React.Component {
    * 送信ボタンが押下されたときの処理
    */
   onSubmit() {
-    this.props.onSubmit(`https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/77b58474-9fa0-4514-8916-70302690fc4b?subscription-key=7d19f95e144b410fa6d10952ec61a447&verbose=true&timezoneOffset=0&q=${this.state.text}`)
+    this.props.onSubmit(`https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/b405b5bb-28b7-4640-b2b9-ec4c0123f2c1?subscription-key=7d19f95e144b410fa6d10952ec61a447&spellCheck=true&bing-spell-check-subscription-key=7d19f95e144b410fa6d10952ec61a447&verbose=true&timezoneOffset=0&q=${this.state.text}`)
     this.setState({ text: '' })
+  }
+
+  /**
+     * テキストエリアででエンターキーが押下されたときの処理
+     */
+    onEnter = (e) => {
+      if (document.activeElement.id === 'form' && e.keyCode === 13) {
+          this.onSubmit()
+      }
   }
 
   render() {
@@ -55,6 +71,8 @@ class Form extends React.Component {
             label="質問する..."
             value={this.state.text}
             onChange={this.onChangeField}
+            id='form'
+            autoFocus
         />
         <IconButton
           variant="fab"

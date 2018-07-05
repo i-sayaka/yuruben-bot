@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Avatar from '@material-ui/core/Avatar';
-import Chip from '@material-ui/core/Chip';
+import { Chip, CircularProgress } from '@material-ui/core';
 import FaceIcon from '@material-ui/icons/Face';
 import DoneIcon from '@material-ui/icons/Done';
 
@@ -30,6 +29,13 @@ class Text extends React.Component {
     render() {
         const { classes } = this.props;
 
+        {if (this.props.loading) {
+          return (
+            <div className={classes.root}>
+              <Chip label={<CircularProgress />} className={classes.chip} />
+            </div>
+          );
+        }}
         {if (this.props.ans === 'None') {
           return (
             <div className={classes.root}>
