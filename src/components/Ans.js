@@ -54,7 +54,7 @@ class Text extends React.Component {
                   <p>銀羽さん「手書き文字」</p>
                   <p>辻さん「期待値の考え方」</p>
                   <p>下岡さん「AI知識なしでできる<br />チャットボットの作り方」</p>
-                  <p>黒木さん「xcodeについて」</p> 
+                  <p>黒木さん「xcodeについて」</p>
                 </div>
               }
                 className={classes.chip} />
@@ -74,7 +74,17 @@ class Text extends React.Component {
           );
         } else {
           return (
-            ''
+            <div className={classes.root}>
+              <Chip label={
+                <div>
+                  <p>次回開催日時</p>
+                  <p>開催場所</p>
+                  <p>LT登壇者</p>
+                  <p>について答えます</p>
+                </div>
+              }
+                className={classes.chip} />
+            </div>
           );
         }
       }
