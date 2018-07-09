@@ -16,6 +16,12 @@ const styles = theme => ({
     height: 'auto',
     maxWidth: '60vw'
   },
+  iframe: {
+    mborder: '1px solid #CCC',
+    borderWidth: '1px',
+    marginBottom: '5px',
+    maxWidth: '100%',
+  },
 });
 
 class Text extends React.Component {
@@ -70,6 +76,18 @@ class Text extends React.Component {
           return (
             <div className={classes.root}>
               <Chip label='次回ゆるべんは、7/5(木)に開催します' className={classes.chip} />
+            </div>
+          );
+        } else if (this.props.ans === '資料') {
+          return (
+            <div className={classes.root}>
+              <Chip label='ゆるべん 1限目の資料です' className={classes.chip} />
+              <div>
+                <iframe className={classes.iframe} src="//www.slideshare.net/slideshow/embed_code/key/kvMrAH44LYMUYV" width="340" height="290" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen> </iframe>
+              </div>
+              <div>
+                <iframe className={classes.iframe} src="//www.slideshare.net/slideshow/embed_code/key/1M5rsReu9PyKM2" width="340" height="290" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen> </iframe>
+              </div>
             </div>
           );
         } else {
