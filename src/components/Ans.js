@@ -95,9 +95,11 @@ class Text extends React.Component {
             <div className={classes.root}>
               <Chip label={
                 <div>
+                  <p>開催意図</p>
                   <p>次回開催日時</p>
                   <p>開催場所</p>
                   <p>LT登壇者</p>
+                  <p>前回の資料</p>
                   <p>について答えます</p>
                 </div>
               }
