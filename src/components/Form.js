@@ -1,7 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Button, TextField, IconButton } from '@material-ui/core'
+import { TextField, IconButton } from '@material-ui/core'
 import { Send } from '@material-ui/icons'
 
 const styles = theme => ({
@@ -9,21 +8,27 @@ const styles = theme => ({
     margin: theme.spacing.unit,
     width: '100vw'
   },
-});
-
-const CustomTextField = withStyles(theme => ({
-  root: {
-      margin: theme.spacing.unit,
-      width: '80vw'
+  bootstrapInput: {
+    borderRadius: 4,
+    backgroundColor: theme.palette.common.white,
+    border: '1px solid #ced4da',
+    fontSize: 16,
+    padding: '10px 12px',
+    width: '80vw',
+    transition: theme.transitions.create(['border-color', 'box-shadow']),
+    '&:focus': {
+      borderColor: '#80bdff',
+      boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
+    },
   },
-}))(TextField)
+});
 
 class Form extends React.Component {
   constructor(props) {
     super(props)
     this.classes = props.classes
     this.state = {
-        text: '',
+      text: '',
     }
     this.onChangeField = this.onChangeField.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
@@ -32,9 +37,9 @@ class Form extends React.Component {
   /**
      * コンポーネントマウント時の処理
      */
-    componentWillMount() {
-      this.eventHandler = this.onEnter.bind(this)
-      document.body.addEventListener('keydown', this.eventHandler)
+  componentWillMount() {
+    this.eventHandler = this.onEnter.bind(this)
+    document.body.addEventListener('keydown', this.eventHandler)
   }
 
   /**
@@ -56,10 +61,10 @@ class Form extends React.Component {
   /**
      * テキストエリアででエンターキーが押下されたときの処理
      */
-    onEnter = (e) => {
-      if (document.activeElement.id === 'form' && e.keyCode === 13) {
-          this.onSubmit()
-      }
+  onEnter = (e) => {
+    if (document.activeElement.id === 'form' && e.keyCode === 13) {
+      this.onSubmit()
+    }
   }
 
   render() {
@@ -67,12 +72,20 @@ class Form extends React.Component {
 
     return (
       <div className={classes.root}>
-        <CustomTextField
-            label="質問する..."
-            value={this.state.text}
-            onChange={this.onChangeField}
-            id='form'
-            autoFocus
+        <TextField
+          label="質問する..."
+          value={this.state.text}
+          onChange={this.onChangeField}
+          id='form'
+          autoFocus
+          defaultValue="react-bootstrap"
+          InputProps={{
+            disableUnderline: true,
+            classes: {
+              root: classes.bootstrapRoot,
+              input: classes.bootstrapInput,
+            },
+          }}
         />
         <IconButton
           variant="fab"
