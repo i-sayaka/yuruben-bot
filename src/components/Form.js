@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { TextField, IconButton } from '@material-ui/core'
+import { Button, TextField, IconButton } from '@material-ui/core'
 import { Send } from '@material-ui/icons'
 
 const styles = theme => ({
@@ -37,9 +38,9 @@ class Form extends React.Component {
   /**
      * コンポーネントマウント時の処理
      */
-  componentWillMount() {
-    this.eventHandler = this.onEnter.bind(this)
-    document.body.addEventListener('keydown', this.eventHandler)
+    componentWillMount() {
+      this.eventHandler = this.onEnter.bind(this)
+      document.body.addEventListener('keydown', this.eventHandler)
   }
 
   /**
@@ -61,10 +62,10 @@ class Form extends React.Component {
   /**
      * テキストエリアででエンターキーが押下されたときの処理
      */
-  onEnter = (e) => {
-    if (document.activeElement.id === 'form' && e.keyCode === 13) {
-      this.onSubmit()
-    }
+    onEnter = (e) => {
+      if (document.activeElement.id === 'form' && e.keyCode === 13) {
+          this.onSubmit()
+      }
   }
 
   render() {

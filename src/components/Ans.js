@@ -24,7 +24,7 @@ const styles = theme => ({
   },
 });
 
-class Ans extends React.Component {
+class Text extends React.Component {
     constructor(props) {
       super(props)
       this.classes = props.classes
@@ -111,4 +111,4 @@ class Ans extends React.Component {
     }
 }
 
-export default withStyles(styles)(Ans);
+export default withStyles(styles)(Text);
