@@ -11,6 +11,10 @@ const styles = theme => ({
   root: {
     width: '100vw'
   },
+  form: {
+    position: 'fixed',
+    bottom: 0
+  },
 });
 
 class App extends Component {
@@ -24,13 +28,13 @@ class App extends Component {
     return (
       <div>
         <div className={this.classes.root}>
-          <Form />
-        </div>
-        <div className={this.classes.root}>
           <Text />
         </div>
         <div className={this.classes.root}>
           <Ans />
+        </div>
+        <div className={this.classes.form}>
+          <Form />
         </div>
       </div>
     );
